@@ -7,7 +7,7 @@ To Build:
 	$ make
 
 To Run:
-	$ ./Dictionary << <"textfile.txt">
+	$ ./DicProg << <"textfile.txt">
 
 Purpose:
 
