@@ -1,0 +1,63 @@
+#ifndef DICTIONARYHEAD
+
+#define DICTIONARYHEAD
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <iostream>
+#include <string>
+#include <vector>
+#define MAX 100
+
+using namespace std;
+using std::string;
+
+typedef string WORD;
+typedef int itr;
+ 
+struct ENTRY {
+  WORD w;
+  int freq;
+};
+
+/****** START OF CLASS DEFINITION ******/
+class DICT {
+private:
+   vector <ENTRY> d;
+public :
+/*
+   constructor. size is the initial size of dictionary
+*/
+   DICT( int size = 0);
+
+/*
+   locateWord will either return the location of found word in dictionary or -1 if it's not found
+*/
+   itr locateWord(WORD w);
+
+/*
+   insert() will insert the word WORD in the dictionary if it's not already there; otherwise, it
+  will increase its frequency by 1 ( this is what operator+() does below)
+*/
+   void insert(WORD w);
+
+/*
+  this overloaded addition operator will insert the word w in the dictionary if it's not already there; otherwise, it
+  will increase its frequency by 1
+*/
+   DICT operator+ ( WORD );
+
+/*
+   dump() will dump the first i words in dictionary to ostream o or all words if i = -1
+*/
+   void dump (ostream &o, int i = -1);
+/*
+    see below
+*/
+   friend ostream &operator<<( ostream &, DICT &);
+}
+
+ostream &operator<<( ostream &, DICT &);
+
+#endif
